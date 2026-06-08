@@ -43,7 +43,12 @@ export default function Shell({ children }: { children: ReactNode }) {
               setColorScheme(computedColorScheme === "dark" ? "light" : "dark")
             }
           >
-            {computedColorScheme === "dark" ? "라이트모드" : "다크모드"}
+            <Text size="xs" className="light">
+              라이트모드
+            </Text>
+            <Text size="xs" className="dark">
+              다크모드
+            </Text>
           </Button>
         </Group>
       </AppShell.Header>
