@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ActionIcon,
   AppShell,
   Burger,
   Button,
@@ -10,6 +11,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Moon, Sun } from "lucide-react";
 import type { ReactNode } from "react";
 
 export default function Shell({ children }: { children: ReactNode }) {
@@ -38,18 +40,17 @@ export default function Shell({ children }: { children: ReactNode }) {
               오성민
             </Text>
           </Group>
-          <Button
+          <ActionIcon
+            size="lg"
+            variant="light"
+            color="gray"
             onClick={() =>
               setColorScheme(computedColorScheme === "dark" ? "light" : "dark")
             }
           >
-            <Text size="xs" className="light">
-              라이트모드
-            </Text>
-            <Text size="xs" className="dark">
-              다크모드
-            </Text>
-          </Button>
+            <Moon className="dark" />
+            <Sun className="light" />
+          </ActionIcon>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>네비게이션 영역</AppShell.Navbar>
