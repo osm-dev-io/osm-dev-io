@@ -24,6 +24,7 @@ export default function Shell({ children }: { children: ReactNode }) {
 
   return (
     <AppShell
+      padding={{ base: 16, sm: 32 }}
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
     >
@@ -53,7 +54,9 @@ export default function Shell({ children }: { children: ReactNode }) {
           </ActionIcon>
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar>네비게이션 영역</AppShell.Navbar>
+      <AppShell.Navbar p={{ base: 16, sm: 32 }}>
+        네비게이션 영역
+      </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
   );
