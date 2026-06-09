@@ -29,7 +29,7 @@ export default function Shell({ children }: { children: ReactNode }) {
       navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
     >
       <AppShell.Header>
-        <Group h="100%" px={32} justify="space-between">
+        <Group h="100%" px={{ base: 16, sm: 32 }} justify="space-between">
           <Group>
             <Burger
               opened={opened}
