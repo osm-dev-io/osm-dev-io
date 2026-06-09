@@ -37,7 +37,7 @@ export default function Shell({ children }: { children: ReactNode }) {
               size="sm"
             />
             <Text size="lg" fw={900}>
-              오성민
+              osm.dev.io
             </Text>
           </Group>
           <ActionIcon
