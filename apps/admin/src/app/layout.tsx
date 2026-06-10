@@ -7,6 +7,7 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
+import Shell from "@/components/Shell";
 
 export const metadata: Metadata = {
   title: "osm.dev.io 어드민",
@@ -27,9 +28,11 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <MantineProvider theme={theme}>
-        <body>{children}</body>
-      </MantineProvider>
+      <body>
+        <MantineProvider theme={theme}>
+          <Shell>{children}</Shell>
+        </MantineProvider>
+      </body>
     </html>
   );
 }
