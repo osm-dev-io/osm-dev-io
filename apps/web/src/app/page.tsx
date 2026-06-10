@@ -1,6 +1,6 @@
 import { Anchor, Group, Image, Stack, Text, Title } from "@mantine/core";
 import NextImage from "next/image";
-import Profile from "@/assets/seongminoh.jpeg";
+import Profile from "../assets/seongminoh.jpeg";
 
 export default function Home() {
   return (

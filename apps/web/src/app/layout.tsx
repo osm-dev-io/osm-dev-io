@@ -1,13 +1,13 @@
 import "@mantine/core/styles.css";
 import {
   ColorSchemeScript,
+  createTheme,
   MantineProvider,
   mantineHtmlProps,
-  createTheme,
 } from "@mantine/core";
 import type { Metadata } from "next";
 import "./globals.css";
-import Shell from "@/components/Shell";
+import Shell from "../components/Shell";
 
 export const metadata: Metadata = {
   title: "오성민 | 지구 정복 일기장",

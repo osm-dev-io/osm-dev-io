@@ -4,7 +4,6 @@ import {
   ActionIcon,
   AppShell,
   Burger,
-  Button,
   Group,
   Text,
   useComputedColorScheme,
