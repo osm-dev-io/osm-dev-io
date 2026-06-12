@@ -1,13 +1,9 @@
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";
 import "./globals.css";
-import {
-  ColorSchemeScript,
-  createTheme,
-  MantineProvider,
-  mantineHtmlProps,
-} from "@mantine/core";
+import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import Shell from "@/components/Shell";
+import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "osm.dev.io 어드민",
@@ -19,19 +15,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = createTheme({
-    white: "#f8f9f6",
-    black: "#0a0a0a",
-  });
   return (
     <html lang="ko" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme}>
+        <Providers>
           <Shell>{children}</Shell>
-        </MantineProvider>
+        </Providers>
       </body>
     </html>
   );
