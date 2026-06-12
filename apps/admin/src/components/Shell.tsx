@@ -1,8 +1,10 @@
 "use client";
 
-import { AppShell, Burger, Group, Text } from "@mantine/core";
+import { AppShell, Burger, Group, NavLink, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import type { ReactNode } from "react";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 export default function Shell({ children }: { children: ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
@@ -22,14 +24,19 @@ export default function Shell({ children }: { children: ReactNode }) {
               hiddenFrom="sm"
               size="sm"
             />
-            <Text size="lg" fw={900}>
+            <Text component={Link} href="/" size="lg" fw={900} c="inherit">
               osm.dev.io 어드민
             </Text>
           </Group>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p={{ base: 16, sm: 32 }}>
-        네비게이션 영역
+        <NavLink
+          component={Link}
+          href="/posts"
+          label="게시글 관리"
+          rightSection={<ChevronRight size={16} />}
+        />
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
