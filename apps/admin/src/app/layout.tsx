@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import Shell from "@/components/Shell";
-import { Providers } from "@/app/providers";
+import Providers from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "osm.dev.io 어드민",
