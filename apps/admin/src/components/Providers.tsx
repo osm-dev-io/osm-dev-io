@@ -20,7 +20,7 @@ function makeQueryClient() {
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
-function getQueryClient() {
+export function getQueryClient() {
   if (environmentManager.isServer()) {
     return makeQueryClient();
   } else {
