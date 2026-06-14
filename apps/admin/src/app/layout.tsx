@@ -1,6 +1,7 @@
 import "@mantine/core/styles.css";
-import type { Metadata } from "next";
+import "@mantine/tiptap/styles.css";
 import "./globals.css";
+import type { Metadata } from "next";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import Shell from "@/components/Shell";
 import Providers from "@/components/Providers";
