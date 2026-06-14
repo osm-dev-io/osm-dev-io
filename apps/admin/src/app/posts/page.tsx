@@ -1,16 +1,20 @@
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import PostsPageContent from "@/app/posts/PostsPageContent";
-import { postsQueryOptions } from "@/queries/posts";
-import { getQueryClient } from "@/queries/getQueryClient";
+import { apiFetch } from "@/queries/apiClient";
+import { Stack, Text, Title } from "@mantine/core";
+import Post from "@/types/Post";
+import NewPostButton from "@/components/NewPostButton";
 
 export default async function PostsPage() {
-  const queryClient = getQueryClient();
-
-  await queryClient.prefetchQuery(postsQueryOptions);
+  const posts = await apiFetch<Post[]>("/posts");
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <PostsPageContent />
-    </HydrationBoundary>
+    <Stack>
+      <Title>게시글 관리</Title>
+      <NewPostButton />
+      {posts.map((post) => (
+        <Text key={post.id}>
+          {post.id} {post.title}
+        </Text>
+      ))}
+    </Stack>
   );
 }
