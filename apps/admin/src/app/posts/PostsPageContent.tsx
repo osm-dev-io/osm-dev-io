@@ -2,10 +2,11 @@
 
 import { Button, Stack, Title } from "@mantine/core";
 import NextLink from "next/link";
-import usePosts from "@/hooks/usePosts";
+import { useQuery } from "@tanstack/react-query";
+import { postsQueryOptions } from "@/queries/posts";
 
 export default function PostsPageContent() {
-  const posts = usePosts();
+  const { data: posts } = useQuery(postsQueryOptions);
   return (
     <Stack>
       <Title>게시글 관리</Title>

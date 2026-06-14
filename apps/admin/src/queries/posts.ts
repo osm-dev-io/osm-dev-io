@@ -5,17 +5,13 @@ import { apiFetch } from "@/queries/apiClient";
 
 export const postsQueryOptions = queryOptions({
   queryKey: ["posts"],
-  queryFn: async () => {
-    const data = await apiFetch<Post[]>("/posts");
-    return data;
-  },
+  queryFn: async () => await apiFetch<Post[]>("/posts"),
 });
 
 export const postsMutationOptions = mutationOptions({
-  mutationFn: (vars: { title: string; content: JSONContent }) => {
-    return apiFetch<null>("/posts", {
+  mutationFn: (body: { title: string; content: JSONContent }) =>
+    apiFetch<null>("/posts", {
       method: "POST",
-      body: JSON.stringify(vars),
-    });
-  },
+      body: JSON.stringify(body),
+    }),
 });
