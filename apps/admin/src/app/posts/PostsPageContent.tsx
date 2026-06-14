@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import usePosts from "@/hooks/usePosts";
 
 export default function PostsPageContent() {
-  const { posts } = usePosts();
+  const posts = usePosts();
   return (
     <Stack>
       <Title>게시글 관리</Title>

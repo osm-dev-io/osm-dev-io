@@ -5,12 +5,20 @@ import { useState } from "react";
 import { Button, Group, Stack, TextInput } from "@mantine/core";
 import { useMutation } from "@tanstack/react-query";
 import { postsMutationOptions } from "@/queries/posts";
+import { useRouter } from "next/navigation";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState({});
+  const router = useRouter();
 
-  const mutation = useMutation(postsMutationOptions);
+  const mutation = useMutation({
+    ...postsMutationOptions,
+    onSuccess: () => {
+      console.log("Successfully created post");
+      router.push("/posts");
+    },
+  });
 
   return (
     <Stack>

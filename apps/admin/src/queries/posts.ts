@@ -1,23 +1,20 @@
 import { mutationOptions, queryOptions } from "@tanstack/react-query";
 import Post from "@/types/Post";
 import { JSONContent } from "@tiptap/react";
+import { apiFetch } from "@/queries/apiClient";
 
 export const postsQueryOptions = queryOptions({
   queryKey: ["posts"],
-  queryFn: async (): Promise<Post[]> => {
-    const res = await fetch("http://localhost:8080/posts");
-    if (!res.ok) throw new Error("게시글 조회 실패");
-    return res.json();
+  queryFn: async () => {
+    const data = await apiFetch<Post[]>("/posts");
+    return data;
   },
 });
 
 export const postsMutationOptions = mutationOptions({
   mutationFn: (vars: { title: string; content: JSONContent }) => {
-    return fetch("http://localhost:8080/posts", {
+    return apiFetch<null>("/posts", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(vars),
     });
   },
