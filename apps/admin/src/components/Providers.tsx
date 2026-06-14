@@ -2,34 +2,8 @@
 
 import type { ReactNode } from "react";
 import { createTheme, MantineProvider } from "@mantine/core";
-import {
-  environmentManager,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-
-function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000,
-      },
-    },
-  });
-}
-
-let browserQueryClient: QueryClient | undefined = undefined;
-
-export function getQueryClient() {
-  if (environmentManager.isServer()) {
-    return makeQueryClient();
-  } else {
-    if (!browserQueryClient) {
-      browserQueryClient = makeQueryClient();
-    }
-    return browserQueryClient;
-  }
-}
+import { QueryClientProvider } from "@tanstack/react-query";
+import { getQueryClient } from "@/queries/getQueryClient";
 
 export default function Providers({ children }: { children: ReactNode }) {
   const theme = createTheme({
