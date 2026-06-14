@@ -1,20 +1,13 @@
-import { apiFetch } from "@/queries/apiClient";
 import { Stack, Text, Title } from "@mantine/core";
-import Post from "@/types/Post";
 import NewPostButton from "@/components/NewPostButton";
+import PostsList from "@/components/PostsList";
 
-export default async function PostsPage() {
-  const posts = await apiFetch<Post[]>("/posts");
-
+export default function PostsPage() {
   return (
     <Stack>
       <Title>게시글 관리</Title>
       <NewPostButton />
-      {posts.map((post) => (
-        <Text key={post.id}>
-          {post.id} {post.title}
-        </Text>
-      ))}
+      <PostsList />
     </Stack>
   );
 }
