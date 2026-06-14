@@ -4,6 +4,7 @@ export default interface Post {
   id: number;
   title: string;
   content: JSONContent;
+  isPublished: boolean;
   createdAt: string;
   updatedAt: string;
 }
