@@ -4,23 +4,13 @@ import TextEditor from "@/components/TextEditor";
 import { useState } from "react";
 import { Button, Group, Stack, TextInput } from "@mantine/core";
 import { useMutation } from "@tanstack/react-query";
-import { JSONContent } from "@tiptap/react";
+import { postsMutationOptions } from "@/queries/posts";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState({});
 
-  const mutation = useMutation({
-    mutationFn: (vars: { title: string; content: JSONContent }) => {
-      return fetch("http://localhost:8080/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(vars),
-      });
-    },
-  });
+  const mutation = useMutation(postsMutationOptions);
 
   return (
     <Stack>
